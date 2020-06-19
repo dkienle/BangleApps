@@ -174,6 +174,8 @@ let gpsReady = false;
 let hrmReady = false;
 let running = false;
 
+var satellites = 0;
+
 function formatClock(date) {
   return ('0' + date.getHours()).substr(-2) + ':' + ('0' + date.getMinutes()).substr(-2);
 }
@@ -233,9 +235,10 @@ function draw() {
   g.setFontAlign(-1, -1, 0);
   g.setColor(gpsReady ? 0x07E0 : 0xF800);
   g.drawString(' GPS', 6, 30);
+  g.setColor(0xFFFF);
+  g.drawString(satellites.toString(),57,30);
 
   g.setFontAlign(1, -1, 0);
-  g.setColor(0xFFFF);
   g.drawString(formatClock(new Date()), 234, 30);
 
   g.setFontAlign(0, -1, 0);
@@ -260,6 +263,7 @@ function handleGps(coords) {
   const step = gps.getDistance(coords);
   gpsReady = coords.fix > 0 && gps.isReady();
   speed = isFinite(gps.speed) ? gps.speed : 0;
+  satellites = fix.satellites;
   if (running) {
     totDist += step.d;
     totTime += step.t;
