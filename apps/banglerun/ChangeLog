@@ -2,3 +2,4 @@
 0.02: Bugfix time: Reset minutes to 0 when hitting 60
 0.03: Bugfix gps: load widgets before turn on GPS
 0.04: show number of gps satellites
+0.05: Bugfix current speed
