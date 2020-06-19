@@ -261,9 +261,10 @@ function draw() {
 
 function handleGps(coords) {
   const step = gps.getDistance(coords);
-  gpsReady = coords.fix > 0 && gps.isReady();
+  /*gpsReady = coords.fix > 0 && gps.isReady();*/
   speed  = isNaN(coords.speed) ? speed : coords.speed;
-  satellites = fix.satellites;
+  satellites = coords.satellites;
+  gpsReady = satellites > 3;
   if (running) {
     totDist += step.d;
     totTime += step.t;
