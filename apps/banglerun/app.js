@@ -295,16 +295,19 @@ function stop() {
   draw();
 }
 
-Bangle.on('GPS', handleGps);
-Bangle.on('HRM', handleHrm);
-Bangle.on('step', handleStep);
-
-Bangle.setGPSPower(1);
-Bangle.setHRMPower(1);
 
 g.clear();
 Bangle.loadWidgets();
 Bangle.drawWidgets();
+
+// load widgets can turn off GPS
+Bangle.setGPSPower(1);
+Bangle.setHRMPower(1);
+
+Bangle.on('GPS', handleGps);
+Bangle.on('HRM', handleHrm);
+Bangle.on('step', handleStep);
+
 drawBackground();
 draw();
 
