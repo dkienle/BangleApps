@@ -30,12 +30,12 @@ exports.show = function(options) {
   var top = 0;
   if (options.title) {
     g.setColor(0x39C7).fillRect(0, y, 239, y+20);
-    g.setColor(-1).setFontAlign(-1, -1, 0).setFont("6x8", 4);
+    g.setColor(-1).setFontAlign(-1, -1, 0).setFont("6x8", 3);
     g.drawString(options.title.trim().substring(0, 13), 25, y+3);
     y+=20;
   }
   if (options.src) {
-    g.setColor(-1).setFontAlign(1, -1, 0).setFont("6x8", 1);
+    g.setColor(-1).setFontAlign(1, -1, 0).setFont("6x8", 3);
     g.drawString(options.src.substring(0, 10), 215, 322-h);
   }
   if (options.icon) {
@@ -66,7 +66,7 @@ exports.show = function(options) {
         body += " " + words[i];
       }
     }
-    g.setColor(-1).setFont("6x8", 1).setFontAlign(-1, -1, 0).drawString(body, x-4, y+4);
+    g.setColor(-1).setFont("6x8", 4).setFontAlign(-1, -1, 0).drawString(body, x-4, y+4);
   }
 
   if (options.render) options.render(320 - h);
