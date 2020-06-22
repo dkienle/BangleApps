@@ -181,7 +181,7 @@ function formatClock(date) {
 }
 
 function formatDistance(m) {
-  return ('0' + (m / 1000).toFixed(2) + ' km').substr(-7);
+  return ((m / 1000).toFixed(2) + ' km');
 }
 
 function formatTime(s) {
@@ -223,7 +223,8 @@ function draw() {
   const totSpeed = totTime ? 3.6 * totDist / totTime : 0;
   const totCadence = totTime ? Math.round(60 * totSteps / totTime) : 0;
 
-  g.setColor(running ? 0x00E0 : 0x0000);
+  /*g.setColor(running ? 0x00E0 : 0x0000);*/
+  g.setColor(0x0000);
   g.fillRect(0, 30, 240, 50);
   g.fillRect(0, 70, 240, 100);
   g.fillRect(0, 120, 240, 150);
@@ -231,8 +232,10 @@ function draw() {
   g.fillRect(0, 220, 240, 240);
 
   g.setFont('6x8', 2);
-
+  
   g.setFontAlign(-1, -1, 0);
+  g.setColor(0x07E0);
+  g.drawString(running ? 'R' : ' ',120,30);
   g.setColor(gpsReady ? 0x07E0 : 0xF800);
   g.drawString(' GPS', 6, 30);
   g.setColor(0xFFFF);
@@ -243,7 +246,7 @@ function draw() {
 
   g.setFontAlign(0, -1, 0);
   g.setFontVector(20);
-  g.drawString(formatDistance(totDist), 120, 70);
+  g.drawString(formatDistance(1000), 120, 70);
   g.drawString(formatTime(totTime), 60, 120);
   g.drawString(formatSpeed(totSpeed), 180, 120);
   g.drawString(totSteps, 60, 170);
@@ -252,7 +255,7 @@ function draw() {
   g.setFont('6x8', 2);
   g.drawString(formatSpeed(speed), 40, 220);
 
-  g.setColor(hrmReady ? 0x07E0 : 0xF800);
+  /*g.setColor(hrmReady ? 0x07E0 : 0xF800);*/
   g.drawString(heartRate, 120, 220);
 
   g.setColor(0xFFFF);
