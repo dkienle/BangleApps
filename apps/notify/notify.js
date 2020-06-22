@@ -30,7 +30,7 @@ exports.show = function(options) {
   var top = 0;
   if (options.title) {
     g.setColor(0x39C7).fillRect(0, y, 239, y+20);
-    g.setColor(-1).setFontAlign(-1, -1, 0).setFont("6x8", 2);
+    g.setColor(-1).setFontAlign(-1, -1, 0).setFont("6x8", 4);
     g.drawString(options.title.trim().substring(0, 13), 25, y+3);
     y+=20;
   }
