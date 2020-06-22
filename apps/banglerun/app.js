@@ -246,7 +246,7 @@ function draw() {
 
   g.setFontAlign(0, -1, 0);
   g.setFontVector(20);
-  g.drawString(formatDistance(1000), 120, 70);
+  g.drawString(formatDistance(totDist), 120, 70);
   g.drawString(formatTime(totTime), 60, 120);
   g.drawString(formatSpeed(totSpeed), 180, 120);
   g.drawString(totSteps, 60, 170);
