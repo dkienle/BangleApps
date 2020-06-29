@@ -19,7 +19,7 @@ exports.show = function(options) {
   var h = options.size||120;
   Bangle.setLCDMode("direct");
   var y = 40;
-  var x = 4;
+  var x = 0;
   // clear area
   g.clear(1);
   // top bar
@@ -43,26 +43,26 @@ exports.show = function(options) {
   // body text
   if (options.body) {
     var body = options.body;
-    const maxChars = Math.floor((300-x)/16);
+    const maxChars = Math.floor((300-0)/28);
     var limit = maxChars;
     let row = 1;
     let words = body.trim().replace("\n", " ").split(" ");
     body = "";
     for (var i = 0; i < words.length; i++) {
       if (body.length + words[i].length + 1 > limit) {
-        if (row>=8) {
+        if (row>=7) {
           body += "...";
           break;
         }
         body += "\n " + words[i];
         row++;
         limit += maxChars;
-        if (row==8) limit -= 4;
+        if (row==7) limit -= 4;
       } else {
         body += " " + words[i];
       }
     }
-    g.setColor(-1).setFont("6x8", 2).setFontAlign(-1, -1, 0).drawString(body, x-4, y+4);
+    g.setColor(-1).setFont("6x8", 3).setFontAlign(-1, -1, 0).drawString(body, x-4, y+4);
   }
 
   if (options.render) options.render(320 - h);
