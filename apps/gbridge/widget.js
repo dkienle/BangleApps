@@ -26,7 +26,9 @@
 
   function handleNotificationEvent(event) {
     require("notify").show(event);
-    Bangle.buzz();
+    Bangle.buzz(1000,1);
+    setTimeout(function () {Bangle.buzz(1000,1);  },1500);
+    setTimeout(function () {Bangle.buzz(1000,1);  },4000);
   }
 
   function handleMusicStateUpdate(event) {
